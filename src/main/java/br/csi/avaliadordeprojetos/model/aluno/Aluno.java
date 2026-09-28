@@ -8,7 +8,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.UUID;
 @Schema(description = "Entidade que representa um aluno")
 @Entity
@@ -51,6 +54,17 @@ public class Aluno {
     @ManyToOne
     @JoinColumn(name = "idprojeto")
     private Projeto projeto;
+
+    public interface AlunoDTO
+    {
+        Long getId();
+        String getNome();
+        String getMatricula();
+        String getEmail();
+
+    }
+
+
 
    /* public Aluno(String nome, String email, String matricula, Endereco endereco)
     {
