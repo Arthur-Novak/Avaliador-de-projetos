@@ -65,5 +65,8 @@ public class AlunoService {
     {
         this.repository.deleteAlunoByUuid(UUID.fromString(uuid));
     }
+
+    public String atribuirProjeto(Long idAluno, Projeto projeto)
 }
+
 

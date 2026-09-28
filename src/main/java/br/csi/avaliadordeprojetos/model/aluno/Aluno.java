@@ -1,5 +1,6 @@
 package br.csi.avaliadordeprojetos.model.aluno;
 
+import br.csi.avaliadordeprojetos.model.projeto.Projeto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -45,6 +46,11 @@ public class Aluno {
     @Embedded
     @NonNull
     private Endereco endereco;
+
+
+    @ManyToOne
+    @JoinColumn(name = "idprojeto")
+    private Projeto projeto;
 
    /* public Aluno(String nome, String email, String matricula, Endereco endereco)
     {

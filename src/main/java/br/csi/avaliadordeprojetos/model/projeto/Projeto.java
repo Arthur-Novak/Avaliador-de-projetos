@@ -1,10 +1,13 @@
 package br.csi.avaliadordeprojetos.model.projeto;
 
+import br.csi.avaliadordeprojetos.model.aluno.Aluno;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Schema(description = "Entidade que representa um projeto")
@@ -33,6 +36,13 @@ public class Projeto {
     @NonNull
     @Schema(description = "Descrição do projeto", example = "Sistema para avaliação de projetos acadêmicos")
     private String descricao;
+
+    private int ano;
+    private int semestre;
+
+    @OneToMany(mappedBy = "projeto")
+    @JsonIgnore
+    private List<Aluno> alunos;
 
 
     public long getId() {
