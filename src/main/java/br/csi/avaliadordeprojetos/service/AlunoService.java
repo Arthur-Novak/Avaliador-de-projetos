@@ -2,6 +2,7 @@ package br.csi.avaliadordeprojetos.service;
 
 import br.csi.avaliadordeprojetos.model.aluno.Aluno;
 import br.csi.avaliadordeprojetos.model.aluno.AlunoRepository;
+import br.csi.avaliadordeprojetos.model.projeto.Projeto;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +68,11 @@ public class AlunoService {
     }
 
     public String atribuirProjeto(Long idAluno, Projeto projeto)
+    {
+        Aluno aluno = this.repository.getReferenceById(idAluno);
+        aluno.setProjeto(projeto);
+        return "Projeto atribuido com sucesso";
+    }
 }
 
 

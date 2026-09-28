@@ -1,6 +1,7 @@
 package br.csi.avaliadordeprojetos.controller;
 
 import br.csi.avaliadordeprojetos.model.aluno.Aluno;
+import br.csi.avaliadordeprojetos.model.projeto.Projeto;
 import br.csi.avaliadordeprojetos.service.AlunoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -122,6 +123,13 @@ public class AlunoController {
     public void atualizarUUID(@RequestBody Aluno aluno)
     {
         this.alunoservice.atualizarUUID(aluno);
+    }
+
+    @PutMapping("/{id}/atribuir-projeto")
+    @Transactional
+    public ResponseEntity vincularProjeto(@PathVariable Long id, @RequestBody Projeto projeto)
+    {
+        return ResponseEntity.ok(this.alunoservice.atribuirProjeto(id, projeto));
     }
 
 }
